@@ -15,7 +15,7 @@ def remove_outliers(data: list[float]):
     d = np.abs(data - np.median(data))
     m = np.median(d)
     s = d / m if m else np.zeros(len(d))
-    return data[s < THRESHOLD]
+    return (data[s < THRESHOLD], data[s > THRESHOLD])
 
 
 def analyze_bat(file: Path):
@@ -67,7 +67,7 @@ def analyze_bat(file: Path):
             )
         )
 
-    clean_time_delta_arr: list[float] = remove_outliers(
+    clean_time_delta_arr, time_delta_out = remove_outliers(
             np.array(time_delta_arr)
         )
     mean_time_delta: float = mean(clean_time_delta_arr)
