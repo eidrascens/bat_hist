@@ -4,6 +4,33 @@ A simple Python script to analyze the battery consumption
 based on number of minutes per 1% decreased logged in
 `/var/lib/upower/*.dat`.
 
+# Installation
+
+Determine the location of your battery information file (usually inside
+`/var/lib/upower/` and ending in `.dat`) (_e.g._ `history-charge-ASUS_Battery-63.dat`)
+and replace the variable `BAT_DIR` at line #116 in `bat_hist.py` with
+the absolute path of the battery file.
+
+Place `src/bat_hist.py` inside any of your `$PATH` (_e.g._ `$HOME/.local/bin`
+(RECOMMENDED)) and create a virtual environment at the same DIR of `bat_hist.py`
+with
+
+```bash
+python -m venv venv
+```
+
+Hereafter, activate the virtual environment with `source venv/bin/activate.*`
+(replace with appropriate extension, _e.g._ `.fish` for FISH). Install the
+dependencies with
+
+```
+pip install numpy==2.5.4 psutil==7.2.2
+```
+
+Finally, create an alias for `<DIR>/venv/bin/python <DIR>/bat_hist.py`.
+
+# Output
+
 Example output:
 
 ```
