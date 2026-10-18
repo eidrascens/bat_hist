@@ -10,7 +10,7 @@ from psutil import sensors_battery
 import numpy as np
 
 
-def remove_outliers(data: list[float]):
+def remove_outliers(data: list[float]) -> tuple[np.array, np.array]:
     THRESHOLD: float = 2
     d = np.abs(data - np.median(data))
     m = np.median(d)
@@ -18,7 +18,7 @@ def remove_outliers(data: list[float]):
     return (data[s < THRESHOLD], data[s > THRESHOLD])
 
 
-def analyze_bat(file: Path):
+def analyze_bat(file: Path) -> None:
     with open(file, "r", encoding="utf-8") as bat_file:
         bat_hist: list[str] = bat_file.readlines()
 
@@ -93,8 +93,7 @@ def analyze_bat(file: Path):
         )
     )
 
-
-def main():
+def main() -> None:
     CWD: Path = Path(dirname(realpath(__file__)))
     temp_file: Path = CWD / "bat.temp"
     BAT_DIR: str = "/var/lib/upower/history-charge-ASUS_Battery-63.dat"
