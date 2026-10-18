@@ -84,6 +84,12 @@ def analyze_bat(file: Path) -> None:
         )
     mean_time_delta: float = mean(clean_time_delta_arr)
     median_time_delta: float = median(clean_time_delta_arr)
+    total_time_used_clean: str = format_minutes(
+            sum(clean_time_delta_arr)
+        )
+    total_time_used_raw: str = format_minutes(
+            sum(time_delta_arr)
+        )
 
     print(
         (
