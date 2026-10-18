@@ -1,5 +1,5 @@
 from datetime import datetime as dt, timedelta
-from os import remove
+from os import remove, get_terminal_size
 from os.path import dirname, realpath
 from pathlib import Path
 from statistics import mean, median
@@ -89,6 +89,7 @@ def analyze_bat(file: Path) -> None:
             sum(time_delta_arr)
         )
 
+    print("=" * get_terminal_size()[0])
     print(
         (
             "Outliers removed: {}\n"
