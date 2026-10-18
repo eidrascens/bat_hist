@@ -61,9 +61,7 @@ def analyze_bat(file: Path) -> None:
             )
 
         time_delta_arr.append(time_delta_m)
-        time_delta_str: str = '{:02d} hr {:02d} min ({delta} min)'.format(
-                *divmod(int(time_delta_m), 60), delta=time_delta_m
-            ) if time_delta_m > 60.0 else f"{time_delta_m} min"
+        time_delta_str: str = format_minutes(time_delta_m)
 
         print(
             (
