@@ -75,8 +75,17 @@ def analyze_bat(file: Path):
 
     print(
         (
-            f"Median Minute / 1% = {mean_time_delta:.2f}"
-            f"\nMean Minute / 1% = {median_time_delta:.2f}"
+            "Outliers removed: {}\n"
+            "Median Minute / 1% = {:.2f} min\n"
+            "Mean Minute / 1% = {:.2f} min\n"
+            "Mean % Consumed / Minute = {:.2f}%\n"
+            "Median % Consumed / Minute = {:.2f}%"
+        ).format(
+            time_delta_out.tolist(),
+            mean_time_delta,
+            median_time_delta,
+            1 / mean_time_delta,
+            1 / median_time_delta,
         )
     )
 
