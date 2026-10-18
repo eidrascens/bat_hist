@@ -18,6 +18,14 @@ def remove_outliers(data: list[float]) -> tuple[np.array, np.array]:
     return (data[s < THRESHOLD], data[s > THRESHOLD])
 
 
+def format_minutes(time_min: float) -> str:
+    return (
+            "{:02d} hr {:02d} min ({time_min:.2f} min)"
+        ).format(
+            *divmod(int(time_min), 60), time_min=time_min
+        ) if time_min > 60.0 else f"{time_min} min"
+
+
 def analyze_bat(file: Path) -> None:
     with open(file, "r", encoding="utf-8") as bat_file:
         bat_hist: list[str] = bat_file.readlines()
