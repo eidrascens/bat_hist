@@ -53,17 +53,21 @@ def analyze_bat(file: Path):
             )
 
         time_delta_arr.append(time_delta_m)
+        time_delta_str: str = '{:02d} hr {:02d} min ({delta} min)'.format(
+                *divmod(int(time_delta_m), 60), delta=time_delta_m
+            ) if time_delta_m > 60.0 else f"{time_delta_m} min"
+
         print(
             (
-                "Batt_i = %d, "
+                "Batt_i = %i, "
                 "Time_i = %s, "
                 "Time_f = %s, "
-                "Time_d = %s."
+                "Time_d = %s"
             ) % (
                 bat_info_arr[i][0],
                 time_i.time(),
                 time_f.time(),
-                time_delta_m
+                time_delta_str
             )
         )
 
