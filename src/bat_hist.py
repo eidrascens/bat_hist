@@ -1,5 +1,5 @@
 from datetime import datetime as dt, timedelta
-from os import remove, get_terminal_size
+from os import get_terminal_size, remove
 from os.path import dirname, realpath
 from pathlib import Path
 from statistics import mean, median
