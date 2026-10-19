@@ -11,7 +11,7 @@ import numpy as np
 
 
 def remove_outliers(data: list[float]) -> tuple[np.array, np.array]:
-    THRESHOLD: float = 2
+    THRESHOLD: float = 3
     d = np.abs(data - np.median(data))
     m = np.median(d)
     s = d / m if m else np.zeros(len(d))
