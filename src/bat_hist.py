@@ -38,11 +38,17 @@ def analyze_bat(file: Path) -> None:
         log_time: str = line[6:17].strip()
 
         #print(bat_p)
-        if bat_stat in ["discharging", "pending-charge"]:
+        if (
+            (
+                bat_stat in [
+                        "discharging",
+                        "pending-charge"
+                    ]
+                ) and (bat_p > 0.0)
+            ):
             bat_info_arr.append(
                 (bat_p, log_time)
             )
-
         if int(bat_p) == 80:
             break
 
