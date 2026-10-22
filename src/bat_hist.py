@@ -56,9 +56,9 @@ def analyze_bat(file: Path) -> None:
     bat_info_arr.reverse()
 
     time_delta_arr: list[float] = []
-    for i in range(0, len(bat_info_arr) - 1):
-        time_i: dt = dt.strptime(bat_info_arr[i][1], FMT)
-        time_f: dt = dt.strptime(bat_info_arr[i+1][1], FMT)
+    for i in range(0, len(bat_info_arr)):
+        time_i: dt = dt.strptime(bat_info_arr[i-1][1], FMT)
+        time_f: dt = dt.strptime(bat_info_arr[i][1], FMT)
         time_f = time_f + timedelta(hours=24) if time_f < time_i else time_f
 
         time_delta: timedelta = time_f - time_i
